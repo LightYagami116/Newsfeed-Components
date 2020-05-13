@@ -37,9 +37,9 @@ const data = [
         mewing kittens Remus Lupin. Palominos scarlet train black robes, Metamorphimagus Niffler dead easy second bedroom. Padma
         and Parvati Sorting Hat Minister of Magic blue turban remember my last.`,
 
-    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights 
-        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven 
-        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot 
+    thirdParagraph: `Toad-like smile Flourish and Blotts he knew I’d come back Quidditch World Cup. Fat Lady baubles banana fritters fairy lights
+        Petrificus Totalus. So thirsty, deluminator firs’ years follow me 12 inches of parchment. Head Boy start-of-term banquet Cleansweep Seven
+        roaring lion hat. Unicorn blood crossbow mars is bright tonight, feast Norwegian Ridgeback. Come seek us where our voices sound, we cannot
         sing above the ground, Ginny Weasley bright red. Fanged frisbees, phoenix tears good clean match.`
   },
   {
@@ -66,8 +66,8 @@ const data = [
         consectetur adipiscing elit. Nidoran Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nidorino Lorem ipsum dolor
         sit amet, consectetur adipiscing elit. Nidoking Lorem ipsum`,
 
-    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel 
-        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James 
+    thirdParagraph: `Gotta catch 'em all Horsea gym Ninjask Absol Sinnoh Poliwag. Gotta catch 'em all Youngster wants to fight Soda Pop Floatzel
+        Leech Life Seismitoad Ariados. Earthquake Pokemon Glitch City Tail Whip Skitty Ekans Dialga. Ut aliquip ex ea commodo consequat James
         Castform Lotad the power that's inside Burnt Berry Makuhita. Ghost Ariados Corphish Dusclops Golbat Gligar Zweilous.`
   },
   {
@@ -88,7 +88,7 @@ const data = [
   }
 ];
 
-/* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below: 
+/* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below:
 
   <div class="article">
     <h2>{title of the article}</h2>
@@ -111,3 +111,97 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+/*const articleMaker = content => {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const articleExpand = document.createElement('span');
+
+  return article;
+}
+
+article.className = 'article';
+article.append(articleTitle);
+article.append(articleDate);
+articleTitle.textContent = content.title;
+articleDate.textContent = content.date;
+*/
+const articleMaker = details => {
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const articleP1 = document.createElement('p');
+  const articleP2 = document.createElement('p');
+  const articleP3 = document.createElement('p');
+  const articleExpand = document.createElement('span');
+  const articleClose = document.createElement('button');
+
+  article.className = 'article';
+  articleDate.className = 'date';
+  articleExpand.className = 'expandButton';
+  articleClose.className = 'close';
+
+  articleExpand.addEventListener('click', () => {
+    articleExpand.textContent =
+      articleExpand.textContent === 'Click to Expand' ? 'Click to Close' : 'Click to Expand';
+    article.classList.toggle('article-open');
+  });
+
+  articleClose.addEventListener('click', () => {
+    articles.removeChild(article);
+  });
+
+  article.append(articleTitle);
+  article.append(articleDate);
+  article.append(articleP1);
+  article.append(articleP2);
+  article.append(articleP3);
+  article.append(articleExpand);
+  article.append(articleClose);
+
+  articleTitle.textContent = details.title;
+  articleDate.textContent = details.date;
+  articleP1.textContent = details.firstParagraph;
+  articleP2.textContent = details.secondParagraph;
+  articleP3.textContent = details.thirdParagraph;
+  articleExpand.textContent = 'Click to Expand';
+  articleClose.textContent = 'Delete';
+
+  return article;
+};
+
+const articles = document.querySelector('.articles');
+
+data.map(data => {
+  const article = articleMaker(data);
+  articles.append(article);
+  return article;
+});
+
+const addArticle = () => {
+  const title = prompt('Title:', '');
+  const date = prompt('Date:', '');
+  const firstParagraph = prompt('First Paragraph:', '');
+  const secondParagraph = prompt('Second Paragraph:', '');
+  const thirdParagraph = prompt('Third Paragraph:', '');
+  const article = articleMaker({
+    title,
+    date,
+    firstParagraph,
+    secondParagraph,
+    thirdParagraph,
+  });
+  articles.append(article);
+  return article;
+};
+
+const addButton = document.createElement('button');
+addButton.className = 'add-btn';
+addButton.addEventListener('click', addArticle);
+addButton.textContent = 'Add';
+
+const page = document.querySelector('body');
+page.append(addButton);
