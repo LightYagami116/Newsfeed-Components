@@ -48,6 +48,7 @@
   height: 50px;
   overflow: hidden;
   box-shadow: 2px 2px 2px lightgrey;
+  transition: height 0.5s ease-in-out;
 }
 .article h2 {
   font-size: 28px;
@@ -84,6 +85,21 @@ button {
   border: none;
   color: #ff0000;
   font-size: 1.2rem;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  background: #000;
+  height: 100vh;
+  width: 20rem;
+  z-index: 1;
+}
+.add-btn {
+  position: absolute;
+  top: 2.6rem;
+  right: 10px;
+  color: #fff;
+  z-index: 100;
 }
 .menu-button {
   position: absolute;

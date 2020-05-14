@@ -85,7 +85,14 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
-  }
+  },
+  {
+  title: `Groot`,
+  date: 'June 14th, 2020',
+  firstParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
+  secondParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
+  thirdParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.'
+}
 ];
 
 /* Step 1: Write a component called 'articleMaker' to create an article. You want your component to return markup like the template below:
@@ -173,30 +180,26 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
   articleClose.addEventListener('click', (e) => {
     articles.removeChild(article);
   });
-  //returns function
+
   return article;
 }
 
-function createArticle(title,date,firstParagraph,secondParagraph,thirdParagraph){
+//adds ability to create new article
+/*const NewArticle = {
+  title: `Groot`,
+  date: 'June 14th, 2020',
+  firstParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
+  secondParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
+  thirdParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.'
+};
 
-}
-console.log(articleMaker());
+const xe = data.push(NewArticle);
+console.log(xe);
+console.log(data);
+*/
 
 /*
-const addArticle = () => {
-  const title = prompt('Title:', '');
-  const date = prompt('Date:', '');
-  const firstParagraph = prompt('First Paragraph:', '');
-  const secondParagraph = prompt('Second Paragraph:', '');
-  const thirdParagraph = prompt('Third Paragraph:', '');
-  const article = createArticle({
-    title,
-    date,
-    firstParagraph,
-    secondParagraph,
-    thirdParagraph,
-  });
-  articles.append(article);
-  return article;
-};
-*/
+const body = document.querySelector('body');
+const newArticles = data.map(data => {
+  return body.appendChild(articleMaker(data.title,data.date,data.firstParagraph,data.secondParagraph,data.thirdParagraph));
+});*/
