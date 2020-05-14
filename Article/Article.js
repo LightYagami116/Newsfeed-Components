@@ -111,25 +111,15 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
-/*const articleMaker = content => {
-  const article = document.createElement('div');
-  const articleTitle = document.createElement('h2');
-  const articleDate = document.createElement('p');
-  const articleP1 = document.createElement('p');
-  const articleP2 = document.createElement('p');
-  const articleP3 = document.createElement('p');
-  const articleExpand = document.createElement('span');
 
-  return article;
-}
+const articles = document.querySelector('.articles');
 
-article.className = 'article';
-article.append(articleTitle);
-article.append(articleDate);
-articleTitle.textContent = content.title;
-articleDate.textContent = content.date;
-*/
-const articleMaker = details => {
+//loops over data array
+data.forEach((content) => {  articles.appendChild(articleMaker(content.title,content.date,content.firstParagraph,content.secondParagraph,content.thirdParagraph));
+ //console.log('content from forEach loop');
+});
+
+function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) {
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
@@ -139,69 +129,43 @@ const articleMaker = details => {
   const articleExpand = document.createElement('span');
   const articleClose = document.createElement('button');
 
-  article.className = 'article';
-  articleDate.className = 'date';
-  articleExpand.className = 'expandButton';
-  articleClose.className = 'close';
+  //appends data to variables
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(articleP1);
+  article.appendChild(articleP2);
+  article.appendChild(articleP3);
+  article.appendChild(articleExpand);
+  article.appendChild(articleClose);
 
-  articleExpand.addEventListener('click', () => {
-    articleExpand.textContent =
-      articleExpand.textContent === 'Click to Expand' ? 'Click to Close' : 'Click to Expand';
-    article.classList.toggle('article-open');
-  });
+  //adding css classes
+  article.classList.add('article');
+  articleDate.classList.add('date');
+  articleExpand.classList.add('expandButton');
 
-  articleClose.addEventListener('click', () => {
-    articles.removeChild(article);
-  });
+  //unicode chars for button open & close symbols
+  const open = '\u25bc';
+  const close = '\u25b2';
+  //add textContent
+  articleExpand.textContent = open;
+  articleClose.textContent = close;
 
-  article.append(articleTitle);
-  article.append(articleDate);
-  article.append(articleP1);
-  article.append(articleP2);
-  article.append(articleP3);
-  article.append(articleExpand);
-  article.append(articleClose);
-
-  articleTitle.textContent = details.title;
-  articleDate.textContent = details.date;
-  articleP1.textContent = details.firstParagraph;
-  articleP2.textContent = details.secondParagraph;
-  articleP3.textContent = details.thirdParagraph;
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  articleP1.textContent = firstParagraph;
+  articleP2.textContent = secondParagraph;
+  articleP3.textContent = thirdParagraph;
   articleExpand.textContent = 'Click to Expand';
   articleClose.textContent = 'Delete';
 
-  return article;
-};
-
-const articles = document.querySelector('.articles');
-
-data.map(data => {
-  const article = articleMaker(data);
-  articles.append(article);
-  return article;
-});
-
-const addArticle = () => {
-  const title = prompt('Title:', '');
-  const date = prompt('Date:', '');
-  const firstParagraph = prompt('First Paragraph:', '');
-  const secondParagraph = prompt('Second Paragraph:', '');
-  const thirdParagraph = prompt('Third Paragraph:', '');
-  const article = articleMaker({
-    title,
-    date,
-    firstParagraph,
-    secondParagraph,
-    thirdParagraph,
+  //add ability to expand, close and delete articles
+  articleExpand.addEventListener('click', (e) => {
+    console.log('clicked');
+    //articleExpand.textContent = 'Click to Close';
+    articleExpand.classList.toggle('article-open');
+    articleClose.classList.toggle('hide-btn');
   });
-  articles.append(article);
+  //returns function
   return article;
-};
-
-const addButton = document.createElement('button');
-addButton.className = 'add-btn';
-addButton.addEventListener('click', addArticle);
-addButton.textContent = 'Add';
-
-const page = document.querySelector('body');
-page.append(addButton);
+}
+console.log(articleMaker());
