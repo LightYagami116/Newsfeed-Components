@@ -156,16 +156,47 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
   articleP2.textContent = secondParagraph;
   articleP3.textContent = thirdParagraph;
   articleExpand.textContent = 'Click to Expand';
-  articleClose.textContent = 'Delete';
+  articleClose.textContent = '✖';
 
-  //add ability to expand, close and delete articles
+  //add ability to expand and close articles
   articleExpand.addEventListener('click', (e) => {
     console.log('clicked');
     //articleExpand.textContent = 'Click to Close';
     article.classList.toggle('article-open');
-    articleExpand.textContent = 'Click to Close';
+    if(articleExpand.textContent === 'Click to Expand'){
+      articleExpand.textContent = 'Click to Close';
+    }else{
+      articleExpand.textContent = 'Click to Expand';
+    }
+  });
+  //adds ability to delete articleClose
+  articleClose.addEventListener('click', (e) => {
+    articles.removeChild(article);
   });
   //returns function
   return article;
 }
+
+function createArticle(title,date,firstParagraph,secondParagraph,thirdParagraph){
+
+}
 console.log(articleMaker());
+
+/*
+const addArticle = () => {
+  const title = prompt('Title:', '');
+  const date = prompt('Date:', '');
+  const firstParagraph = prompt('First Paragraph:', '');
+  const secondParagraph = prompt('Second Paragraph:', '');
+  const thirdParagraph = prompt('Third Paragraph:', '');
+  const article = createArticle({
+    title,
+    date,
+    firstParagraph,
+    secondParagraph,
+    thirdParagraph,
+  });
+  articles.append(article);
+  return article;
+};
+*/
