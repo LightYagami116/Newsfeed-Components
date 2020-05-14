@@ -144,11 +144,11 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
   articleExpand.classList.add('expandButton');
 
   //unicode chars for button open & close symbols
-  const open = '\u25bc';
-  const close = '\u25b2';
+  //const open = '\u25bc';
+  //const close = '\u25b2';
   //add textContent
-  articleExpand.textContent = open;
-  articleClose.textContent = close;
+  //articleExpand.textContent = open;
+  //articleClose.textContent = close;
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
@@ -162,8 +162,8 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
   articleExpand.addEventListener('click', (e) => {
     console.log('clicked');
     //articleExpand.textContent = 'Click to Close';
-    articleExpand.classList.toggle('article-open');
-    articleClose.classList.toggle('hide-btn');
+    article.classList.toggle('article-open');
+    articleExpand.textContent = 'Click to Close';
   });
   //returns function
   return article;
