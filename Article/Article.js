@@ -150,12 +150,6 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
   articleDate.classList.add('date');
   articleExpand.classList.add('expandButton');
 
-  //unicode chars for button open & close symbols
-  //const open = '\u25bc';
-  //const close = '\u25b2';
-  //add textContent
-  //articleExpand.textContent = open;
-  //articleClose.textContent = close;
 
   articleTitle.textContent = title;
   articleDate.textContent = date;
@@ -183,23 +177,3 @@ function articleMaker(title,date,firstParagraph,secondParagraph,thirdParagraph) 
 
   return article;
 }
-
-//adds ability to create new article
-/*const NewArticle = {
-  title: `Groot`,
-  date: 'June 14th, 2020',
-  firstParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
-  secondParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.',
-  thirdParagraph: 'We are Groot. I am Groot. We are Groot. I am Groot. I am Groot. I am Groot. I am Groot. I am Groot. We are Groot. I am Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. We are Groot. I am Groot. I am Groot. We are Groot. We are Groot. I am Groot. We are Groot. I am Groot. I am Groot.'
-};
-
-const xe = data.push(NewArticle);
-console.log(xe);
-console.log(data);
-*/
-
-/*
-const body = document.querySelector('body');
-const newArticles = data.map(data => {
-  return body.appendChild(articleMaker(data.title,data.date,data.firstParagraph,data.secondParagraph,data.thirdParagraph));
-});*/
